@@ -11,43 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var hero_service_1 = require('./hero.service');
 var AppComponent = (function () {
-    // make HeroService a private variable/instance
-    function AppComponent(heroService) {
-        this.heroService = heroService;
+    function AppComponent() {
         this.title = 'Tour of Heroes';
     }
-    AppComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
-    };
-    AppComponent.prototype.getHeroes = function () {
-        var _this = this;
-        this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
-    };
-    AppComponent.prototype.ngOnInit = function () {
-        // gets heroes when our AppComponent activates
-        this.getHeroes();
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <h2>My Heroes</h2>\n    <ul class=\"heroes\">\n      <li\n        *ngFor=\"let hero of heroes\"\n        (click)=\"onSelect(hero)\"\n        [class.selected]=\"hero === selectedHero\"\n      >\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n    <my-hero-detail [hero]=\"selectedHero\"></my-hero-detail>\n  ",
-            styles: ["\n    .selected {\n      background-color: #CFD8DC !important;\n      color: white;\n    }\n    .heroes {\n      margin: 0 0 2em 0;\n      list-style-type: none;\n      padding: 0;\n      width: 15em;\n    }\n    .heroes li {\n      cursor: pointer;\n      position: relative;\n      left: 0;\n      background-color: #EEE;\n      margin: .5em;\n      padding: .3em 0;\n      height: 1.6em;\n      border-radius: 4px;\n    }\n    .heroes li.selected:hover {\n      background-color: #BBD8DC !important;\n      color: white;\n    }\n    .heroes li:hover {\n      color: #607D8B;\n      background-color: #DDD;\n      left: .1em;\n    }\n    .heroes .text {\n      position: relative;\n      top: -3px;\n    }\n    .heroes .badge {\n      display: inline-block;\n      font-size: small;\n      color: white;\n      padding: 0.8em 0.7em 0 0.7em;\n      background-color: #607D8B;\n      line-height: 1em;\n      position: relative;\n      left: -1px;\n      top: -4px;\n      height: 1.8em;\n      margin-right: .8em;\n      border-radius: 4px 0 0 4px;\n    }\n    body {\n      background-color: red;\n    }\n  "],
+            template: "\n    <h1>{{title}}</h1>\n    <nav>\n\t\t<a\trouterLink=\"/dashboard\"\n\t\t\trouterLinkActive=\"active\"\n\t\t\t>Dashboard</a>\n\t\t<a\trouterLink=\"/heroes\"\n\t\t\trouterLinkActive=\"active\"\n\t\t\t>Heroes</a>\n    </nav>\n   \t<router-outlet></router-outlet>\n  ",
+            styleUrls: ['app/app.component.css'],
             providers: [hero_service_1.HeroService] // hero.service.ts as provider
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService])
+        __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-/* AppComponent is the root component.
- * Hosts the client user experience.
- * Each component controls a view (through it's template).
- *
- * @Component 'decorator' function takes metadata object as arg, applied to the class.
- *    selector: CSS selector for the HTML element that represents the component
- *      Angular creates an instance of AppComponent wherever it see 'my-app' element in HTML
- *    template: the HTML that defines the component (can include other components here too)
- *
- * Component Class, empty right now, expand with properties and app logic. Export this class.
- */ 
 //# sourceMappingURL=app.component.js.map
